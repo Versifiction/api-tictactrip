@@ -1,0 +1,9 @@
+.App-Logo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+img {
+    height: 75px;
+}

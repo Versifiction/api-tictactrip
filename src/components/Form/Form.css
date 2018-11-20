@@ -1,0 +1,33 @@
+.App-Form {
+    padding: 2rem 2rem;
+}
+
+.App-Form-Trips {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px 0 0 10px;
+    padding: 2rem 2rem;
+    width: 40%;
+}
+
+.App-Form-Trips-Content {
+    flex-direction: column;
+    width: 80%;
+}
+
+.App-Form-Trips-Content-Places, .App-Form-Trips-Content-Dates {
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-weight: 900 !important;
+    font-size: 18px !important;
+    margin-bottom: 2rem !important;
+}
+
+.container {
+    display: flex;
+    flex-wrap: nowrap;
+}

@@ -1,0 +1,10 @@
+.App-Title {
+    margin-top: 2rem;
+    font-weight: bold;
+}
+
+h1 {
+    text-align: center;
+    color: #000;
+    margin-bottom: 4rem !important;
+}
