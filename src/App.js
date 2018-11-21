@@ -18,25 +18,30 @@ class App extends Component {
       depart: "",
       return: "",
       cities: [],
+      resultMessage: "",
+      destinationMessage: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.swapCities = this.swapCities.bind(this);
+    this.getValueFromLi = this.getValueFromLi.bind(this);
+    this.openResults = this.openResults.bind(this);
   }
 
-  componentDidMount() {
-    this.callBackendAPI()
-      .then(res => this.setState({ data: res.express }))
-      .catch(err => console.log(err));
-  }
+  getValueFromLi = (evt) => {
+    var arrivalInput = document.getElementsByName("cityArrival")[0].getAttribute("value");
+    var departureInput = document.getElementsByName("cityDeparture")[0].getAttribute("value");
 
-  callBackendAPI = async () => {
-    const response = await fetch('/express_backend');
-    const body = await response.json();
-
-    if (response.status !== 200) {
-      throw Error(body.message)
+    if (arrivalInput === "") {
+      this.setState({
+        cityDeparture: evt.target.value,
+      });
+      departureInput = evt.target.value;
+    } else {
+      this.setState({
+        cityArrival: evt.target.value,
+      });
+      arrivalInput = evt.target.value;
     }
-    return body;
   }
 
   handleChange = (evt) => {
@@ -44,14 +49,54 @@ class App extends Component {
     state[evt.target.name] = evt.target.value.trim().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
     this.setState(state);
 
-    axios.get(`https://www-uat.tictactrip.eu/api/cities/autocomplete/?q=${this.state.cityDeparture}`)
+    if (evt.target.name === "cityDeparture") {
+      axios.get(`https://www-uat.tictactrip.eu/api/cities/autocomplete/?q=${this.state.cityDeparture}`)
       .then((response) => {
-          console.log(response);
           this.setState({
-            cities: response
+            cities: response.data,
           }, () => {
           })
-          console.log(this.state.cityDeparture);
+      })
+      .catch((error) => {
+          console.log(error);
+      })
+      if (state.cityDeparture === "" && state.cityArrival === "") {
+        this.setState({
+          resultMessage: "Les destinations préférées de nos voyageurs",
+        });
+      }
+    } else {
+      axios.get(`https://www-uat.tictactrip.eu/api/cities/autocomplete/?q=${this.state.cityArrival}`)
+      .then((response) => {
+          this.setState({
+            cities: response.data
+          }, () => {
+          })
+      })
+      .catch((error) => {
+          console.log(error);
+      })
+    }
+  }
+
+  openResults = (evt) => {
+    let state = this.state;
+    if (evt.target.name === "cityDeparture") {
+      this.setState({
+        destinationMessage: "Choisissez votre lieu de départ",
+      });
+    } else {
+      this.setState({
+        destinationMessage: "Choisissez votre lieu d'arrivée",
+      });
+    }
+
+    axios.get("https://www-uat.tictactrip.eu/api/cities/popular/5")
+      .then((response) => {
+          this.setState({
+            cities: response.data
+          }, () => {
+          })
       })
       .catch((error) => {
           console.log(error);
@@ -67,7 +112,7 @@ class App extends Component {
   }
 
   render() {
-    const { cityDeparture, cityArrival, cities } = this.state;
+    const { cityDeparture, cityArrival, cities, resultMessage, destinationMessage } = this.state;
     return (
       <div className="App">
         <Logo />
@@ -79,6 +124,10 @@ class App extends Component {
           cityDeparture={cityDeparture}
           cityArrival={cityArrival}
           cities={cities}
+          resultMessage={resultMessage}
+          destinationMessage={destinationMessage}
+          getValueFromLi={this.getValueFromLi}
+          openResults={this.openResults}
         />
       </div>
     );

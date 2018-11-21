@@ -1,9 +1,46 @@
 .App-Results {
-    display: flex;
-    flex-wrap: nowrap;
     justify-content: center;
     background-color: #bbb;
     border-radius: 0 10px 10px 0;
     padding: 2rem 2rem;
     width: 35%;
+}
+
+.App-Results-Message, .App-Results-Destination {
+    color: black;
+}
+
+.App-Results-Destination {
+    font-weight: bold;
+}
+
+.App-Result {
+    list-style-type: none;
+    color: white;
+}
+
+.App-Result:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+ul {
+    -webkit-margin-before: 0 !important;
+    -webkit-margin-after: 0 !important;
+    -webkit-margin-start: 0 !important;
+    -webkit-margin-end: 0 !important;
+    -webkit-padding-start: 0 !important;
+    padding: 0 !important;
+    list-style-type: none !important;
+}
+
+.separator.small.white {
+    height: 1px;
+    margin: 20px auto 30px;
+    opacity: 1;
+    width: 100%;
+}
+
+.separator.small.white {
+    background-color: #fff;
 }

@@ -7,7 +7,7 @@ import Input from '../Input';
 import Select from '../Select';
 import Results from '../Results';
 
-const Form = ({ backgroundImage, cityDeparture, cityArrival, handleChange, inputFocus, swapCities, cities }) => {
+const Form = ({ destinationMessage, openResults, getValueFromLi, backgroundImage, handleChange, inputFocus, swapCities, cityDeparture, cityArrival, cities, resultMessage }) => {
     const style = {
         backgroundImage: "url("+ backgroundImage +")",
         backgroundSize: "cover",
@@ -25,12 +25,16 @@ const Form = ({ backgroundImage, cityDeparture, cityArrival, handleChange, input
                                 placeholder="Saisissez votre ville de départ"
                                 handleChange={handleChange}
                                 value={cityDeparture}
+                                getValueFromLi={getValueFromLi}
+                                openResults={openResults}
                             />
                             <Input
                                 name="cityArrival"
                                 placeholder="Saisissez votre ville d'arrivée"
                                 handleChange={handleChange}
                                 value={cityArrival}
+                                getValueFromLi={getValueFromLi}
+                                openResults={openResults}
                             />
                             <Button
                                 swapCities={swapCities}
@@ -57,6 +61,8 @@ const Form = ({ backgroundImage, cityDeparture, cityArrival, handleChange, input
                     cityDeparture={cityDeparture}
                     cityArrival={cityArrival}
                     cities={cities}
+                    resultMessage={resultMessage}
+                    destinationMessage={destinationMessage}
                 />
             </Container>
         </div>

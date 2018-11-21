@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Input.css';
 
-const Input = ({ placeholder, name, handleChange, inputFocus, value }) => {
+const Input = ({ placeholder, name, handleChange, inputFocus, value, openResults }) => {
     return (
         <div className="App-Input">
             <input
@@ -11,6 +11,7 @@ const Input = ({ placeholder, name, handleChange, inputFocus, value }) => {
                 placeholder={placeholder}
                 onChange={handleChange}
                 value={value}
+                onClick={openResults}
             />
         </div>
     );
