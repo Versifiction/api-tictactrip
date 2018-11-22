@@ -4,14 +4,24 @@
     border-radius: 0 10px 10px 0;
     padding: 2rem 2rem;
     width: 35%;
+    visibility: hidden;
+    position: relative;
 }
 
 .App-Results-Message, .App-Results-Destination {
     color: black;
 }
 
-.App-Results-Destination {
+.App-Results-Destination, .App-Results-Close {
     font-weight: bold;
+}
+
+.App-Results-Close {
+    position: absolute;
+    font-size: 20px;
+    top: 1px;
+    right: 10px;
+    cursor: pointer;
 }
 
 .App-Result {
@@ -25,7 +35,7 @@
 }
 
 ul {
-    -webkit-margin-before: 0 !important;
+    margin-top: 2rem !important;
     -webkit-margin-after: 0 !important;
     -webkit-margin-start: 0 !important;
     -webkit-margin-end: 0 !important;

@@ -8,6 +8,7 @@ import Form from '../src/components/Form';
 import background from '../src/images/background.png';
 // eslint-disable-next-line
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+import $ from 'jquery';
 
 class App extends Component {
   constructor() {
@@ -28,20 +29,8 @@ class App extends Component {
   }
 
   getValueFromLi = (evt) => {
-    var arrivalInput = document.getElementsByName("cityArrival")[0].getAttribute("value");
-    var departureInput = document.getElementsByName("cityDeparture")[0].getAttribute("value");
-
-    if (arrivalInput === "") {
-      this.setState({
-        cityDeparture: evt.target.value,
-      });
-      departureInput = evt.target.value;
-    } else {
-      this.setState({
-        cityArrival: evt.target.value,
-      });
-      arrivalInput = evt.target.value;
-    }
+    $('.App-Form-cityDeparture').val($(this).text());
+    $('.App-Form-cityArrival').val($(this).text());
   }
 
   handleChange = (evt) => {
@@ -80,7 +69,9 @@ class App extends Component {
   }
 
   openResults = (evt) => {
-    let state = this.state;
+    let resultsDiv = document.getElementsByClassName("App-Results")[0];
+    resultsDiv.style.visibility = "visible";
+
     if (evt.target.name === "cityDeparture") {
       this.setState({
         destinationMessage: "Choisissez votre lieu de départ",
