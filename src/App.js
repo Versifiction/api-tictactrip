@@ -21,6 +21,7 @@ class App extends Component {
       cities: [],
       resultMessage: "",
       destinationMessage: "",
+      inputActive: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.swapCities = this.swapCities.bind(this);
@@ -28,9 +29,86 @@ class App extends Component {
     this.openResults = this.openResults.bind(this);
   }
 
+  getFavorites = () => {
+    let state = this.state;
+    let cutCityDeparture = state.cityDeparture.toLowerCase().split(",");
+    let finalCutCityDeparture = cutCityDeparture[0];
+
+    let cutCityArrival = state.cityArrival.toLowerCase().split(",");
+    let finalCutCityArrival = cutCityArrival[0];
+
+    if (state.cityDeparture !== "" && state.inputActive === "cityDeparture") {
+      axios.get(`https://www-uat.tictactrip.eu/api/cities/popular/from/${finalCutCityDeparture}/5`)
+      .then((response) => {
+          this.setState({
+            cities: response.data,
+          }, () => {
+          })
+      })
+      .catch((error) => {
+          console.log(error);
+      })
+      this.setState({
+        resultMessage: "Les destinations préférées de nos voyageurs depuis " + state.cityDeparture,
+      });
+      this.getValueFromLiReversed();
+    } else if (state.cityDeparture !== "" && state.inputActive === "cityArrival") {
+      axios.get(`https://www-uat.tictactrip.eu/api/cities/popular/from/${finalCutCityArrival}/5`)
+      .then((response) => {
+          this.setState({
+            cities: response.data,
+          }, () => {
+          })
+      })
+      .catch((error) => {
+          console.log(error);
+      })
+      this.setState({
+        resultMessage: "Les destinations préférées de nos voyageurs depuis " + state.cityArrival,
+      });
+      this.getValueFromLiReversed();
+    }
+  }
+
   getValueFromLi = (evt) => {
-    $('.App-Form-cityDeparture').val($(this).text());
-    $('.App-Form-cityArrival').val($(this).text());
+    if (this.state.inputActive === "cityDeparture") {
+      $('.App-Result-Li').on('click',function() {
+        var content= $(this).text();
+        $('.App-Form-Trips-cityDeparture').val(content);
+      });
+      this.setState({
+        cityDeparture: $('.App-Form-Trips-cityDeparture').val(),
+      });
+    } else {
+      $('.App-Result-Li').on('click',function() {
+        var content= $(this).text();
+        $('.App-Form-Trips-cityArrival').val(content);
+      });
+      this.setState({
+        cityArrival: $('.App-Form-Trips-cityArrival').val(),
+      });
+    }
+    this.getFavorites();
+  }
+
+  getValueFromLiReversed = (evt) => {
+    if (this.state.inputActive === "cityDeparture") {
+      $('.App-Result-Li').on('click',function() {
+        var content= $(this).text();
+        $('.App-Form-Trips-cityArrival').val(content);
+      });
+      this.setState({
+        cityDeparture: $('.App-Form-Trips-cityDeparture').val(),
+      });
+    } else {
+      $('.App-Result-Li').on('click',function() {
+        var content= $(this).text();
+        $('.App-Form-Trips-cityDeparture').val(content);
+      });
+      this.setState({
+        cityArrival: $('.App-Form-Trips-cityArrival').val(),
+      });
+    }
   }
 
   handleChange = (evt) => {
@@ -75,10 +153,12 @@ class App extends Component {
     if (evt.target.name === "cityDeparture") {
       this.setState({
         destinationMessage: "Choisissez votre lieu de départ",
+        inputActive: "cityDeparture",
       });
     } else {
       this.setState({
         destinationMessage: "Choisissez votre lieu d'arrivée",
+        inputActive: "cityArrival",
       });
     }
 

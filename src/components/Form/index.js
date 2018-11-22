@@ -25,7 +25,6 @@ const Form = ({ destinationMessage, openResults, getValueFromLi, backgroundImage
                                 placeholder="Saisissez votre ville de départ"
                                 handleChange={handleChange}
                                 value={cityDeparture}
-                                getValueFromLi={getValueFromLi}
                                 openResults={openResults}
                             />
                             <Input
@@ -33,7 +32,6 @@ const Form = ({ destinationMessage, openResults, getValueFromLi, backgroundImage
                                 placeholder="Saisissez votre ville d'arrivée"
                                 handleChange={handleChange}
                                 value={cityArrival}
-                                getValueFromLi={getValueFromLi}
                                 openResults={openResults}
                             />
                             <Button
@@ -63,6 +61,7 @@ const Form = ({ destinationMessage, openResults, getValueFromLi, backgroundImage
                     cities={cities}
                     resultMessage={resultMessage}
                     destinationMessage={destinationMessage}
+                    getValueFromLi={getValueFromLi}
                 />
             </Container>
         </div>

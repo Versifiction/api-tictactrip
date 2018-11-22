@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Input.css';
 
-const Input = ({ placeholder, name, handleChange, inputFocus, value, openResults }) => {
+const Input = ({ classname, placeholder, name, handleChange, inputFocus, value, openResults }) => {
     return (
         <div className="App-Input">
             <input
@@ -12,6 +12,7 @@ const Input = ({ placeholder, name, handleChange, inputFocus, value, openResults
                 onChange={handleChange}
                 value={value}
                 onClick={openResults}
+                className={classname}
             />
         </div>
     );
