@@ -26,6 +26,7 @@ const Form = ({ destinationMessage, openResults, getValueFromLi, backgroundImage
                                 handleChange={handleChange}
                                 value={cityDeparture}
                                 openResults={openResults}
+                                classname="App-Form-Trips-cityDeparture"
                             />
                             <Input
                                 name="cityArrival"
@@ -33,6 +34,7 @@ const Form = ({ destinationMessage, openResults, getValueFromLi, backgroundImage
                                 handleChange={handleChange}
                                 value={cityArrival}
                                 openResults={openResults}
+                                classname="App-Form-Trips-cityArrival"
                             />
                             <Button
                                 swapCities={swapCities}
