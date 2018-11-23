@@ -1,15 +1,17 @@
 .App-Results {
     justify-content: center;
-    background-color: #485761;
+    background-color: white;
+    border-radius: .3125em;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     padding: 2rem 2rem;
     width: 35%;
     visibility: hidden;
+    margin-left: 30px;
     position: relative;
 }
 
 .App-Results-Message, .App-Results-Destination {
-    color: white;
+    color: #485761;
 }
 
 .App-Results-Destination, .App-Results-Close {
@@ -24,9 +26,28 @@
     cursor: pointer;
 }
 
+.App-Results-List {
+    outline: 0;
+    border-radius: .3125em;
+    border: 1px solid #DCE3E6;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
+.App-Result-Li {
+    border-bottom: 1px solid #DCE3E6;
+    padding-left: 35px;
+    margin-top: 0.5rem;
+    color: #485761;
+    display: block;
+    overflow: hidden;
+}
+
 .App-Result {
     list-style-type: none;
-    color: white;
+    color: #485761;
 }
 
 .App-Result:hover {
@@ -44,6 +65,10 @@ ul {
     list-style-type: none !important;
 }
 
+p {
+    margin-bottom: 0.5rem !important;
+}
+
 .separator.small.white {
     height: 1px;
     margin: 20px auto 30px;
@@ -53,4 +78,8 @@ ul {
 
 .separator.small.white {
     background-color: #fff;
+}
+
+.capitalize {
+    text-transform: capitalize;
 }

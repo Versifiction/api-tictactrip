@@ -3,7 +3,7 @@ import React from 'react';
 import './Button.css';
 
 
-const Button = ({ swapCities }) => {
+const Button = ({ swapCities, cityArrival, cityDeparture }) => {
     return (
         <button
             className="App-Button"

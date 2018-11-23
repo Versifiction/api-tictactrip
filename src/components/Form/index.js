@@ -26,7 +26,7 @@ const Form = ({ destinationMessage, openResults, getValueFromLi, backgroundImage
                                 handleChange={handleChange}
                                 value={cityDeparture}
                                 openResults={openResults}
-                                classname="App-Form-Trips-cityDeparture"
+                                classname="App-Form-Trips-cityDeparture capitalize"
                             />
                             <Input
                                 name="cityArrival"
@@ -34,10 +34,12 @@ const Form = ({ destinationMessage, openResults, getValueFromLi, backgroundImage
                                 handleChange={handleChange}
                                 value={cityArrival}
                                 openResults={openResults}
-                                classname="App-Form-Trips-cityArrival"
+                                classname="App-Form-Trips-cityArrival capitalize"
                             />
                             <Button
                                 swapCities={swapCities}
+                                cityDeparture={cityDeparture}
+                                cityArrival={cityArrival}
                             />
                         </div>
                         <div className="App-Form-Trips-Content-Dates">
@@ -45,11 +47,13 @@ const Form = ({ destinationMessage, openResults, getValueFromLi, backgroundImage
                                 name="depart"
                                 placeholder="Aller (JJ/MM/AAAA)"
                                 handleChange={handleChange}
+                                classname="App-Form-Trips-dateDepart"
                             />
                             <Input
                                 name="return"
                                 placeholder="Retour (JJ/MM/AAAA)"
                                 handleChange={handleChange}
+                                classname="App-Form-Trips-dateReturn"
                             />
                         </div>
                         <div className="App-Form-Trips-Content-Persons">

@@ -17,26 +17,25 @@ const Results = ({ destinationMessage, getValueFromLi, cityDeparture, cityArriva
         return cutRegion(city.local_name);
     }); */
 
-    const allCitiesDisplayed = cities.slice(0, 5).map(city =>
+    const allCitiesDisplayed = cities.slice(0, 7).map(city =>
         <div
             className="App-Result"
             key={city.city_id}
         >
             <li
                 onClick={getValueFromLi}
-                data-value={city.local_name}
+                data-value={city.unique_name}
                 className="App-Result-Li"
             >
-                {city.local_name}
+                <p className="capitalize">{city.unique_name}</p>
             </li>
-        <div className="separator small white"></div>
         </div>
     )
 
     return (
         <div className="App-Results">
             <div className="App-Results-Close" onClick={closeResults}>x</div>
-            <p className="App-Results-Destination">{destinationMessage}</p>
+            <h2 className="App-Results-Destination">{destinationMessage}</h2>
             <p className="App-Results-Message">{resultMessage}</p>
             <ul className="App-Results-List">{allCitiesDisplayed}</ul>
         </div>

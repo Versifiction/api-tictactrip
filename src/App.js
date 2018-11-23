@@ -49,9 +49,6 @@ class App extends Component {
       .catch((error) => {
           console.log(error);
       })
-      this.setState({
-        resultMessage: "Les destinations préférées de nos voyageurs depuis " + state.cityDeparture,
-      });
       this.getValueFromLiReversed();
     } else if (state.cityDeparture !== "" && state.inputActive === "cityArrival") {
       axios.get(`https://www-uat.tictactrip.eu/api/cities/popular/from/${finalCutCityArrival}/5`)
@@ -64,9 +61,6 @@ class App extends Component {
       .catch((error) => {
           console.log(error);
       })
-      this.setState({
-        resultMessage: "Les destinations préférées de nos voyageurs depuis " + state.cityArrival,
-      });
       this.getValueFromLiReversed();
     }
   }

@@ -1,9 +1,52 @@
 input[type=text] {
+    padding: 11px 0 11px 35px;
     width: 100%;
+    line-height: 20px;
+    background-repeat: no-repeat;
+    background-position: 11px center;
+    border: 1px solid grey;
+}
+
+input[type=text]::placeholder {
+    text-transform: none !important;
+}
+
+.App-Form-Trips-cityArrival {
     margin-bottom: 1rem;
-    padding: 10px 10px;
 }
 
 input:focus {
-    border: 2px solid #E48D25;
-  }
+    border: 1px solid #01C3A7 !important;
+}
+
+.App-Form-Trips-cityDeparture {
+    background-image: url(../../images/departure.svg);
+    background-position: 7px 7px;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-radius: .3125em;
+}
+
+.App-Form-Trips-cityArrival {
+    background-image: url(../../images/arrival.svg);
+    background-position: 7px 7px;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-radius: .3125em;
+}
+
+.App-Form-Trips-dateDepart {
+    background-image: url(../../images/depart.svg);
+    background-position: 7px 7px;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-radius: .3125em;
+}
+
+.App-Form-Trips-dateReturn {
+    background-image: url(../../images/return.svg);
+    background-position: 7px 7px;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-radius: .3125em;
+}
