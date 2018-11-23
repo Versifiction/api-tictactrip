@@ -1,7 +1,7 @@
 .App-Results {
     justify-content: center;
-    background-color: #bbb;
-    border-radius: 0 10px 10px 0;
+    background-color: #485761;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     padding: 2rem 2rem;
     width: 35%;
     visibility: hidden;
@@ -9,7 +9,7 @@
 }
 
 .App-Results-Message, .App-Results-Destination {
-    color: black;
+    color: white;
 }
 
 .App-Results-Destination, .App-Results-Close {

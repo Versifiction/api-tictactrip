@@ -5,6 +5,7 @@ import './App.css';
 import Logo from '../src/components/Logo';
 import Title from '../src/components/Title';
 import Form from '../src/components/Form';
+import Manual from '../src/components/Manual';
 import background from '../src/images/background.png';
 // eslint-disable-next-line
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
@@ -200,6 +201,7 @@ class App extends Component {
           getValueFromLi={this.getValueFromLi}
           openResults={this.openResults}
         />
+        <Manual />
       </div>
     );
   }
